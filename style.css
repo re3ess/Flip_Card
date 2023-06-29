@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Open+Sans&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans Korean', sans-serif;
+}
+
+p {
+  font-size: 20px;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #464f51;
+}
+
+.wrapper {
+  padding: 25px;
+  background: #d7d9ce;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.cards,
+.card,
+.view,
+.details,
+p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards {
+  height: 400px;
+  width: 400px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.cards .card {
+  cursor: pointer;
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  height: calc(100% / 4 - 10px);
+  width: calc(100% / 4 - 10px);
+}
+
+.card.shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-13px);
+  }
+  40% {
+    transform: translateX(13px);
+  }
+  60% {
+    transform: translateX(-8px);
+  }
+  80% {
+    transform: translateX(8px);
+  }
+}
+
+.cards .card .view {
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  background: #fff;
+  border-radius: 8px;
+  backface-visibility: hidden;
+  transition: transform 0.3s linear;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.card .front-view i {
+  font-size: 40px;
+}
+
+.card .back-view i {
+  font-size: 40px;
+}
+
+.card .back-view {
+  transform: rotateY(-180deg);
+}
+
+.card.flip .front-view {
+  transform: rotateY(180deg);
+}
+
+.card.flip .back-view {
+  transform: rotateY(0);
+}
+
+.details {
+  width: 100%;
+  margin-top: 15px;
+  padding: 0 20px;
+  background: #fff;
+  border-radius: 8px;
+  height: calc(100% / 4 - 30px);
+  justify-content: space-between;
+}
+
+.details p {
+  font-size: 18px;
+  height: 17px;
+  padding-right: 32px;
+  border-right: 2px solid #e0e2db;
+}
+
+.details button {
+  cursor: pointer;
+  font-size: 18px;
+  color: #f55536;
+  border-radius: 4px;
+  padding: 4px 10px;
+  background: #fff;
+  border: 2px solid #f55536;
+  transition: 0.3s ease;
+}
+
+.details button:hover {
+  color: #fff;
+  background: #f55536;
+}
+
+::selection {
+  color: #fff;
+  background: #f55536;
+}
+
+@media screen and (max-width: 700px) {
+  .cards {
+    height: 350px;
+    width: 350px;
+  }
+  .card .front-view i {
+    font-size: 35px;
+  }
+  .card .back-view i {
+    font-size: 35px;
+  }
+
+  .details button {
+    font-size: 15px;
+  }
+
+  .details p {
+    font-size: 16px;
+    height: 17px;
+    padding-right: 20px;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .cards {
+    height: 300px;
+    width: 300px;
+  }
+
+  .card .front-view i {
+    font-size: 30px;
+  }
+
+  .card .back-view i {
+    font-size: 30px;
+  }
+
+  .details {
+    margin-top: 10px;
+    padding: 0 15px;
+    height: calc(100% / 4 - 20px);
+  }
+
+  .details p {
+    font-size: 12px;
+    height: 17px;
+    padding-right: 20px;
+  }
+
+  .details button {
+    font-size: 10px;
+    padding: 5px 10px;
+    border: none;
+    color:#fff;
+    background: #f55536;
+  }
+}
